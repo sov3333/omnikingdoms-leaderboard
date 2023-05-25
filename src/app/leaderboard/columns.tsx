@@ -76,7 +76,13 @@ export const columns: ColumnDef<Player>[] = [
         },
         cell: ({ row }) => {
             const WIN_RATE: number = row.getValue("winRatio")
-            return <div>{WIN_RATE * 100}%</div>
+            let formatted: string
+            if (WIN_RATE === 1) {
+                formatted = "100"
+            } else {
+                formatted = (WIN_RATE * 100).toFixed(1)
+            }
+            return <div>{formatted}%</div>
         },
     },
     {
