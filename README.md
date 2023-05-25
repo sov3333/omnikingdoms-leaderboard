@@ -7,7 +7,8 @@ A leaderboard for the [OmniKingdoms](https://omnikingdoms.io/) game.
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn/ui](https://ui.shadcn.com/)
+- [Shadcn/ui Data Table](https://ui.shadcn.com/docs/components/data-table)
+- [TanStack Table](https://tanstack.com/table/v8)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
