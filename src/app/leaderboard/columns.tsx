@@ -17,6 +17,10 @@ export const columns: ColumnDef<Player>[] = [
     {
         accessorKey: "name",
         header: "Player",
+        cell: ({ row }) => {
+            const NAME: string = row.getValue("name")
+            return <div className="font-semibold">{NAME}</div>
+        },
     },
     {
         accessorKey: "wins",
@@ -29,6 +33,10 @@ export const columns: ColumnDef<Player>[] = [
     {
         accessorKey: "winRatio",
         header: "Win Ratio",
+        cell: ({ row }) => {
+            const WIN_RATE: number = row.getValue("winRatio")
+            return <div>{WIN_RATE * 100}%</div>
+        },
     },
     {
         accessorKey: "strength",
@@ -36,6 +44,10 @@ export const columns: ColumnDef<Player>[] = [
     },
     {
         accessorKey: "totalMatches",
-        header: "Total Matches",
+        header: () => <div className="text-right">Total Matches</div>,
+        cell: ({ row }) => {
+            const TOTAL_MATCHES: number = row.getValue("totalMatches")
+            return <div className="text-right">{TOTAL_MATCHES}</div>
+        },
     },
 ]
