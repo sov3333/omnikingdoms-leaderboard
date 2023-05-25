@@ -44,7 +44,7 @@ export const columns: ColumnDef<Player>[] = [
             return (
                 <Button
                     variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() !== "desc")} // sorts by desc first
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} // sorts by asc first
                 >
                     Losses
                     <ArrowUpDown className="ml-2 h-4 w-4" />
