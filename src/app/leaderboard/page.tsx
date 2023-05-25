@@ -5,8 +5,21 @@ const siteUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
 
 async function getData(): Promise<Player[]> {
     // Fetch data from API here.
-    const players = await fetch(`${siteUrl}/api`, { method: "GET" })
-    return players.json()
+    try {
+        const players = await fetch(`${siteUrl}/api`, { method: "GET" })
+
+        if (players.status === 404) {
+            console.log("Error getting players")
+            return []
+        }
+
+        const playersJson = players.json()
+        return playersJson
+
+    } catch (error) {
+        console.log(error)
+        return []
+    }
 }
 
 export default async function Leaderboard() {
