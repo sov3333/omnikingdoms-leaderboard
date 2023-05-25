@@ -1,6 +1,8 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import { ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -24,15 +26,45 @@ export const columns: ColumnDef<Player>[] = [
     },
     {
         accessorKey: "wins",
-        header: "Wins",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} // sorts by asc first
+                >
+                    Wins
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        },
     },
     {
         accessorKey: "losses",
-        header: "Losses",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() !== "desc")} // sorts by desc first
+                >
+                    Losses
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        },
     },
     {
         accessorKey: "winRatio",
-        header: "Win Ratio",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() !== "desc")} // sorts by desc first
+                >
+                    Win Ratio
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        },
         cell: ({ row }) => {
             const WIN_RATE: number = row.getValue("winRatio")
             return <div>{WIN_RATE * 100}%</div>
@@ -40,14 +72,30 @@ export const columns: ColumnDef<Player>[] = [
     },
     {
         accessorKey: "strength",
-        header: "Strength",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() !== "desc")} // sorts by desc first
+                >
+                    Strength
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        },
     },
     {
         accessorKey: "totalMatches",
-        header: () => <div className="text-right">Total Matches</div>,
-        cell: ({ row }) => {
-            const TOTAL_MATCHES: number = row.getValue("totalMatches")
-            return <div className="text-right">{TOTAL_MATCHES}</div>
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() !== "desc")} // sorts by desc first
+                >
+                    Total Matches
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            )
         },
     },
 ]
